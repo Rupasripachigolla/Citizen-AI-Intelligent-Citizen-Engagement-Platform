@@ -1,0 +1,10 @@
+fastapi
+sqlite3
+hashlib
+secrets
+datetime
+json
+typing
+os
+pathlib
+langchain_ibm

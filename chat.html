@@ -1,0 +1,79 @@
+<!-- CHAT.HTML -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat - Citizen AI</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/dashboard" class="logo">🇮🇳 Citizen AI</a>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="/dashboard">Dashboard</a></li>
+                        <li><a href="/chat">Chat</a></li>
+                        <li><a href="/feedback">Feedback</a></li>
+                        <li><a href="/admin">Admin</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="card wide-card">
+                <h2 style="text-align: center; color: #667eea; margin-bottom: 2rem;">🤖 AI Chat Assistant</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: #666;">
+                    Ask me anything about Indian government services, laws, and civic procedures. I'm here to help!
+                </p>
+
+                {% if user_message and ai_response %}
+                <div class="chat-container">
+                    <div class="chat-message user-message">
+                        <div class="message-label">You asked:</div>
+                        <div>{{ user_message }}</div>
+                    </div>
+                    
+                    <div class="chat-message ai-message">
+                        <div class="message-label">AI Response:</div>
+                        <div>{{ ai_response }}</div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <form method="post" action="/chat">
+                    <div class="form-group">
+                        <label for="message">Your Question:</label>
+                        <textarea id="message" name="message" placeholder="Ask me about government services, legal procedures, citizen rights, or any civic query..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-full">Send Message</button>
+                </form>
+
+                <div style="margin-top: 2rem; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+                    <h4 style="color: #667eea; margin-bottom: 1rem;">💡 Example Questions:</h4>
+                    <ul style="color: #666; line-height: 1.8;">
+                        <li>How do I apply for a passport in India?</li>
+                        <li>What are my rights under the Indian Constitution?</li>
+                        <li>How can I file a complaint against government services?</li>
+                        <li>What documents do I need for Aadhaar card?</li>
+                        <li>How do I register for voter ID?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Citizen AI. Empowering Indian Citizens with AI Technology.</p>
+        </div>
+    </footer>
+</body>
+</html>

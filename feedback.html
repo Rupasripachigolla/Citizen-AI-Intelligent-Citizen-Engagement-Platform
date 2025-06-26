@@ -1,0 +1,72 @@
+<!-- FEEDBACK.HTML -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Citizen AI</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/dashboard" class="logo">🇮🇳 Citizen AI</a>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="/dashboard">Dashboard</a></li>
+                        <li><a href="/chat">Chat</a></li>
+                        <li><a href="/feedback">Feedback</a></li>
+                        <li><a href="/admin">Admin</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="card wide-card">
+                <h2 style="text-align: center; color: #667eea; margin-bottom: 2rem;">📝 Share Your Feedback</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: #666;">
+                    Your feedback helps us improve our services and better serve Indian citizens.
+                </p>
+
+                {% if success %}
+                <div class="alert alert-success">
+                    {{ success }}
+                    {% if sentiment %}
+                    <br><strong>Detected Sentiment:</strong> {{ sentiment }}
+                    {% endif %}
+                </div>
+                {% endif %}
+
+                <form method="post" action="/feedback">
+                    <div class="form-group">
+                        <label for="feedback">Your Feedback:</label>
+                        <textarea id="feedback" name="feedback" placeholder="Share your experience with government services, suggestions for improvement, or any concerns you may have..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-full">Submit Feedback</button>
+                </form>
+
+                <div style="margin-top: 2rem; padding: 1rem; background: #e8f4fd; border-radius: 8px;">
+                    <h4 style="color: #667eea; margin-bottom: 1rem;">🔍 How Sentiment Analysis Works:</h4>
+                    <p style="color: #666; line-height: 1.6;">
+                        Our AI analyzes your feedback to understand public sentiment about government services. 
+                        This helps identify areas of satisfaction and concern, ultimately improving service delivery 
+                        for all citizens. Your feedback is valuable and contributes to better governance.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Citizen AI. Empowering Indian Citizens with AI Technology.</p>
+        </div>
+    </footer>
+</body>
+</html>

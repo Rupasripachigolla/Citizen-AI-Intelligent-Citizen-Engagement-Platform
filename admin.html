@@ -1,0 +1,122 @@
+<!-- ADMIN.HTML -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Citizen AI</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/dashboard" class="logo">🇮🇳 Citizen AI</a>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="/dashboard">Dashboard</a></li>
+                        <li><a href="/chat">Chat</a></li>
+                        <li><a href="/feedback">Feedback</a></li>
+                        <li><a href="/admin">Admin</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="hero" style="padding: 2rem 0;">
+                <h1>📊 Service Analytics</h1>
+                <p>Insights into citizen sentiment and service performance</p>
+            </div>
+
+            {% if sentiment_stats %}
+            <div class="stats-grid">
+                {% for sentiment, count in sentiment_stats.items() %}
+                <div class="stat-card">
+                    <span class="stat-number">{{ count }}</span>
+                    <span class="stat-label">{{ sentiment }} Feedback</span>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>📈 Sentiment Overview</h3>
+                    <p>Monitor public sentiment about government services in real-time.</p>
+                    {% if sentiment_stats %}
+                    <div style="margin-top: 1rem;">
+                        {% for sentiment, count in sentiment_stats.items() %}
+                        <div style="margin-bottom: 0.5rem;">
+                            <strong>{{ sentiment }}:</strong> {{ count }} responses
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <p style="color: #666; margin-top: 1rem;">No feedback data available yet.</p>
+                    {% endif %}
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>🎯 Service Improvement</h3>
+                    <p>AI-powered insights help identify areas that need attention and improvement.</p>
+                    <div style="margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+                        <strong>Key Benefits:</strong>
+                        <ul style="margin-top: 0.5rem; color: #666;">
+                            <li>Real-time sentiment tracking</li>
+                            <li>Automated issue identification</li>
+                            <li>Data-driven decision making</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>🤖 AI Performance</h3>
+                    <p>Monitor the effectiveness of AI responses and citizen satisfaction.</p>
+                    <div style="margin-top: 1rem; padding: 1rem; background: #e8f4fd; border-radius: 8px;">
+                        <strong>System Status:</strong>
+                        <div style="margin-top: 0.5rem; color: #28a745;">
+                            ✅ IBM Granite AI: Active<br>
+                            ✅ Sentiment Analysis: Running<br>
+                            ✅ Database: Connected
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card full-card">
+                <h3 style="color: #667eea; margin-bottom: 1rem;">📋 System Information</h3>
+                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                        <div>
+                            <strong>AI Model:</strong><br>
+                            <span style="color: #666;">IBM Granite 3.3-2B Instruct</span>
+                        </div>
+                        <div>
+                            <strong>Database:</strong><br>
+                            <span style="color: #666;">SQLite (Built-in)</span>
+                        </div>
+                        <div>
+                            <strong>Framework:</strong><br>
+                            <span style="color: #666;">FastAPI + Jinja2</span>
+                        </div>
+                        <div>
+                            <strong>Focus:</strong><br>
+                            <span style="color: #666;">Indian Government Services</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Citizen AI. Empowering Indian Citizens with AI Technology.</p>
+        </div>
+    </footer>
+</body>
+</html>
